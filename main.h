@@ -1,32 +1,36 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <stddef.h>
 #include <stdarg.h>
-#include <unistd.h>
-#include <limits.h>
+
+int _putchar(char c);
+int _puts(char *str);
+int _printf(const char *format, ...);
+int print_char(va_list c);
+int print_string(va_list s);
+int print_dec(va_list d);
+int print_hex(va_list x);
+int print_HEX(va_list X);
+int print_octal(va_list o);
+int print_bin(va_list b);
+int print_unsigned(va_list u);
+int print_rot13(va_list R);
+int print_rev(va_list r);
+int print_int(va_list i);
+int print_S(va_list S);
+int print_p(va_list p);
 
 /**
- * struct prin - structure that contain flag and funtion
- * @flag: character that identify funtion
- * @fn: pointer to funtion
+ * struct code_format - structure format
+ * @sc: specifier
+ * @f: function associated
  */
 
-typedef struct print
+typedef struct code_format
 {
-	char flag;
-	char *(*fn)(va_list argu);
-} sir;
-void *_calloc(unsigned int nmemb, unsigned int size);
-int _strncat(char *buff, const char *format, int n);
-char *fntn(const char symbl, va_list);
-void *_strcat(char *dest, char *src);
-char *str_chr(va_list argu);
-char *str_str(va_list argu);
-int _strlen(char *s);
-int _printf(const char *format, ...);
-char *str_percent(va_list argu);
-char *str_int(va_list argu);
+  char *sc;
+  int (*f)(va_list);
+} code_f;
+
 #endif

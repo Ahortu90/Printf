@@ -27,6 +27,7 @@ int (*find_correct_func(const char *format))(va_list)
 		{"p", print_p},
 		{NULL, NULL}
 	};
+	
 	while (find_f[i].sc)
 	{
 		if (find_f[i].sc[0] == (*format))
@@ -74,7 +75,9 @@ int _printf(const char *format, ...)
 		if (format[i + 1] == '%')
 			i += 2;
 		else
+		{
 			i++;
+		}
 	}
 	va_end(list);
 	return (len);
