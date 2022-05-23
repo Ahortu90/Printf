@@ -1,32 +1,36 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include <stdarg.h>
-#include <unistd.h>
-#include <limits.h>
+#include <stddef.h>
+#include <stdlib.h>
 
 /**
- * struct prin - structure that contain flag and funtion
- * @flag: character that identify funtion
- * @fn: pointer to funtion
+ * struct structprint - structure containing
+ * @q: the location and method to translate data to characters.
+ * @u: print function for specific type.
+ *
+ * Return: int
  */
-
-typedef struct prin
+typedef struct structprint
 {
-	char flag;
-	char *(*fn)(va_list argu);
-} sir;
-void *_calloc(unsigned int nmemb, unsigned int size);
-int _strncat(char *buff, const char *format, int n);
-char *fntn(const char symbl, va_list);
-void *_strcat(char *dest, char *src);
-char *str_chr(va_list argu);
-char *str_str(va_list argu);
-int _strlen(char *s);
-int _printf(const char *format, ...);
-char *str_percent(va_list argu);
-char *str_int(va_list argu);
+	char *q;
+	int (*u)(char *format, va_list);
+} structype;
+
+int _putchar(char ch);
+int _puts(char *string);
+int printc(char *format, va_list);
+int printstr(char *format, va_list);
+int (*driver(char *format))(char *format, va_list);
+int _printf(char *format, ...);
+int printint(char *format, va_list pa);
+int integer(int number);
+int contadordigit(int number);
+int _abs(int number);
+int printpercent(char *format, va_list pa);
+int printhex(char *format, va_list);
+int printHEX(char *format, va_list);
+int printocta(char *format, va_list);
+int print_unsign(char *format, va_list);
 #endif
